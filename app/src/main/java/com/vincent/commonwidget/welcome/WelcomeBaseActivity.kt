@@ -61,7 +61,7 @@ abstract class WelcomeBaseActivity : AppCompatActivity() {
     abstract fun getResId(): Int;
 
     /**
-     *  返回跳转界面时间
+     *  返回跳转界面时间(秒)
      */
     abstract fun getSkipSecs(): Int
 
