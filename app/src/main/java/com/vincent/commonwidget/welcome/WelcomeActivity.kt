@@ -10,7 +10,7 @@ import com.vincent.commonwidget.R
 class WelcomeActivity : WelcomeBaseActivity() {
 
     override fun getSkipSecs(): Int {
-        return  3;
+        return  1;
     }
 
     override fun getActivityToSkip(): Activity{
