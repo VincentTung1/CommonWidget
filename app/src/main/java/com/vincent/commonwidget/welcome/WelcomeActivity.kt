@@ -1,7 +1,7 @@
 package com.vincent.commonwidget.welcome
 
 import android.app.Activity
-import com.vincent.commonwidget.MainActivity
+import com.vincent.commonwidget.main.MainActivity
 import com.vincent.commonwidget.R
 
 /**

@@ -1,7 +1,7 @@
-package com.vincent.commonwidget
+package com.vincent.commonwidget.main
 
 import android.graphics.Color
-import com.vincent.commonwidget.main.MainBaseActivity
+import com.vincent.commonwidget.R
 import com.vincent.commonwidget.widget.bottomnavigation.entity.BottomNavigationItemConfig
 
 class MainActivity : MainBaseActivity() {
