@@ -5,6 +5,9 @@ package com.vincent.commonwidget.widget.bottomnavigation.entity
  */
 class BottomNavigationItemConfig {
 
+    /**
+     *  必须设置Id ，不然点击事件无法识别
+     */
     var mId : Int =  0
 
     /**
