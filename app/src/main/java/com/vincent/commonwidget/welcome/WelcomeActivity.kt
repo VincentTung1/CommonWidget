@@ -1,8 +1,8 @@
 package com.vincent.commonwidget.welcome
 
 import android.app.Activity
-import com.vincent.commonwidget.main.MainActivity
 import com.vincent.commonwidget.R
+import com.vincent.commonwidget.main.MainActivity
 
 /**
  *  通用欢迎界面

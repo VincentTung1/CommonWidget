@@ -1,19 +1,25 @@
 package com.vincent.commonwidget.main
 
 import android.graphics.Color
+import android.support.v4.app.Fragment
 import com.vincent.commonwidget.R
+import com.vincent.commonwidget.fragment.FirstFragment
+import com.vincent.commonwidget.fragment.SecondFragment
+import com.vincent.commonwidget.fragment.ThirdFragment
 import com.vincent.commonwidget.widget.bottomnavigation.entity.BottomNavigationItemConfig
 
 class MainActivity : MainBaseActivity() {
 
- override fun getDefaultSelectItem(): Int {
-    return 1
- }
+    private lateinit var first: FirstFragment
 
- override fun getBottomNaviItems(): ArrayList<BottomNavigationItemConfig> {
+    override fun getDefaultSelectItem(): Int {
+        return 0
+    }
 
-       var configs = ArrayList<BottomNavigationItemConfig>()
-        var config1 = BottomNavigationItemConfig()
+    override fun getBottomNaviItems(): ArrayList<BottomNavigationItemConfig> {
+
+        val configs = ArrayList<BottomNavigationItemConfig>()
+        val config1 = BottomNavigationItemConfig()
         config1.mTitle = "标题1"
         config1.mNormalRes = R.mipmap.ic_launcher
         config1.mHighlightRes = R.mipmap.ic_launcher_round
@@ -21,7 +27,7 @@ class MainActivity : MainBaseActivity() {
         config1.mTitleHighLightColor = Color.BLUE
         configs.add(config1)
 
-        var config2 = BottomNavigationItemConfig()
+        val config2 = BottomNavigationItemConfig()
         config2.mTitle = "标题2"
         config2.mNormalRes = R.mipmap.ic_launcher
         config2.mHighlightRes = R.mipmap.ic_launcher_round
@@ -29,7 +35,7 @@ class MainActivity : MainBaseActivity() {
         config2.mTitleHighLightColor = Color.BLUE
         configs.add(config2)
 
-        var config3 = BottomNavigationItemConfig()
+        val config3 = BottomNavigationItemConfig()
         config3.mTitle = "标题3"
         config3.mNormalRes = R.mipmap.ic_launcher
         config3.mHighlightRes = R.mipmap.ic_launcher_round
@@ -37,8 +43,27 @@ class MainActivity : MainBaseActivity() {
         config3.mTitleHighLightColor = Color.BLUE
         configs.add(config3)
 
-       return  configs
+        return configs
     }
 
 
+    override fun getMainFragments(): java.util.ArrayList<Fragment> {
+
+        val frags = ArrayList<Fragment>()
+
+        first = FirstFragment()
+        frags.add(first)
+
+        val second = SecondFragment()
+        frags.add(second)
+
+        val third = ThirdFragment()
+        frags.add(third)
+
+        return frags
+    }
+
+    override fun getDefaultShownFragment() : Fragment{
+        return  first
+    }
 }
