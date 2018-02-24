@@ -57,7 +57,7 @@ abstract class MainBaseActivity :AppCompatActivity(){
 
         mRootLayout.addView(bottomNavi)
 
-         var bottomItems = getBottomNaviItems()
+         val bottomItems = getBottomNaviItems()
 
          for (item in bottomItems){
              bottomNavi.addItem(item)

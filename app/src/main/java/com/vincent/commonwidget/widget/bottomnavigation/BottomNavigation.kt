@@ -25,6 +25,7 @@ class BottomNavigation : RadioGroup {
 
     fun addItem(config : BottomNavigationItemConfig){
         val item= BottomNavigationItem(context)
+        item.id  = config.mId
         item.setNormalRes(config.mNormalRes)
         item.setHighLightRes(config.mHighlightRes)
         item.setTitle(config.mTitle)

@@ -5,6 +5,8 @@ package com.vincent.commonwidget.widget.bottomnavigation.entity
  */
 class BottomNavigationItemConfig {
 
+    var mId : Int =  0
+
     /**
      *  普通状态时的图标
      */

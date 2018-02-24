@@ -20,6 +20,7 @@ class MainActivity : MainBaseActivity() {
 
         val configs = ArrayList<BottomNavigationItemConfig>()
         val config1 = BottomNavigationItemConfig()
+        config1.mId = 1
         config1.mTitle = "标题1"
         config1.mNormalRes = R.mipmap.ic_launcher
         config1.mHighlightRes = R.mipmap.ic_launcher_round
@@ -28,6 +29,7 @@ class MainActivity : MainBaseActivity() {
         configs.add(config1)
 
         val config2 = BottomNavigationItemConfig()
+        config2.mId = 2
         config2.mTitle = "标题2"
         config2.mNormalRes = R.mipmap.ic_launcher
         config2.mHighlightRes = R.mipmap.ic_launcher_round
@@ -36,6 +38,7 @@ class MainActivity : MainBaseActivity() {
         configs.add(config2)
 
         val config3 = BottomNavigationItemConfig()
+        config3.mId = 3
         config3.mTitle = "标题3"
         config3.mNormalRes = R.mipmap.ic_launcher
         config3.mHighlightRes = R.mipmap.ic_launcher_round

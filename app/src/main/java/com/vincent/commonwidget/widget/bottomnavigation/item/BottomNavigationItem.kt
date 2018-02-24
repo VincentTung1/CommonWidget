@@ -1,6 +1,8 @@
 package com.vincent.commonwidget.widget.bottomnavigation.item
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
 import android.widget.RadioButton
 
@@ -30,11 +32,11 @@ class BottomNavigationItem : RadioButton{
         setOnCheckedChangeListener { buttonView, isChecked ->
             run {
                 if (isChecked) {
-                    val drawable = context.getDrawable(mHighlightRes!!)
+                    val drawable = context.resources.getDrawable(mHighlightRes!!)
                     setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
                     setTextColor(mTitleHighlightColor!!)
                 } else {
-                    val drawable = context.getDrawable(mNormalRes!!)
+                    val drawable = context.resources.getDrawable(mNormalRes!!)
                     setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
                     setTextColor(mTitleNormalColor!!)
                 }
@@ -48,7 +50,8 @@ class BottomNavigationItem : RadioButton{
     fun setNormalRes(resId :Int){
         mNormalRes = resId
         buttonDrawable = null
-        val drawable = context.getDrawable(mNormalRes!!)
+        setButtonDrawable(ColorDrawable(Color.TRANSPARENT));
+        val drawable = context.resources.getDrawable(mNormalRes!!)
         setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
     }
 
