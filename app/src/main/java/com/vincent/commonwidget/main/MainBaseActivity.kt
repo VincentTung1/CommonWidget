@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.widget.RelativeLayout
+import com.vincent.commonwidget.helper.FragmentReplaceHelper
 import com.vincent.commonwidget.widget.bottomnavigation.BottomNavigation
 import com.vincent.commonwidget.widget.bottomnavigation.entity.BottomNavigationItemConfig
 import com.vincent.commonwidget.widget.viewpager.CanotSlidingViewpager
@@ -78,8 +79,9 @@ abstract class MainBaseActivity :AppCompatActivity(){
          fragmentParams.addRule(RelativeLayout.ALIGN_TOP,bottomNavi.id)
          vp.layoutParams = fragmentParams
          vp.setBackgroundColor(Color.TRANSPARENT)
-         mContentLayoutId = Random().nextInt(1000)
-         vp.id = mContentLayoutId as Int
+
+
+         vp.id = Random().nextInt(1000)
 
 
         val fragments = getMainFragments()
@@ -91,6 +93,15 @@ abstract class MainBaseActivity :AppCompatActivity(){
          vp.offscreenPageLimit = fragments.size  // 设置viewpager缓存view 的个数
 
          mRootLayout.addView(vp)
+
+         val rootLayout = RelativeLayout(this)
+
+         val rootLayoutParams = RelativeLayout.LayoutParams(-1,-1)
+         rootLayout.layoutParams  =rootLayoutParams
+         mContentLayoutId = Random().nextInt(1000)
+         rootLayout.id = mContentLayoutId as Int
+         mRootLayout.addView(rootLayout)
+         FragmentReplaceHelper.get().setRootLayoutId(rootLayout.id)
 
 
         //设置默认显示的 fragment
