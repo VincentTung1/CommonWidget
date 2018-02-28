@@ -20,7 +20,10 @@ import com.vincent.commonwidget.widget.topnavigation.TopNavigation
 abstract class WebViewBaseFragment : TouchNoPassBaseFragment() {
 
     companion object {
+        /**加载的url*/
         val LOAD_URL = "load_url"
+        /**是否显示顶部栏*/
+        val IS_SHOW_TOP_BAR = "is_show_top_bar"
     }
 
     private lateinit var mWv: WebView
@@ -47,6 +50,11 @@ abstract class WebViewBaseFragment : TouchNoPassBaseFragment() {
 
 
         val bundle = arguments
+        val isShown = bundle.getBoolean(IS_SHOW_TOP_BAR,true)
+        if (!isShown){
+            mNavi.visibility = View.GONE
+        }
+
         val url :String=bundle.getString(LOAD_URL)
         if (!TextUtils.isEmpty(url)) {
             mWv.loadUrl(url)
