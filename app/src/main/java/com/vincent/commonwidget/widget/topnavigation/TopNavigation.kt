@@ -1,6 +1,7 @@
 package com.vincent.commonwidget.widget.topnavigation
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
@@ -83,7 +84,24 @@ class TopNavigation : RelativeLayout {
         mLeftBtn.setOnClickListener(titleClickListener)
     }
 
-    
+    /**
+     *  是否添加底部黑色线
+     */
+    fun enableBottomLine(enable: Boolean,color : Int){
+        if (enable){
+            val line = View(context)
+            val lineParam = RelativeLayout.LayoutParams(-1,2);
+            lineParam.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
+            line.layoutParams = lineParam
+            if (color>0){
+                line.setBackgroundColor(color)
+            }else{
+                line.setBackgroundColor(Color.GRAY)
+            }
+            addView(line)
+        }
+    }
+
     /**
      *  设置左边按钮图标
      */

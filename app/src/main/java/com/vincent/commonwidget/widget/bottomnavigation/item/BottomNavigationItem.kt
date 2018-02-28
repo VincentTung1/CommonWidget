@@ -26,18 +26,23 @@ class BottomNavigationItem : RadioButton{
 
     private var mTitleHighlightColor : Int? =0
 
-
+    /**图标大小*/
+    private val mIconSize = 50
 
     init {
         setOnCheckedChangeListener { buttonView, isChecked ->
             run {
                 if (isChecked) {
                     val drawable = context.resources.getDrawable(mHighlightRes!!)
-                    setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
+                    drawable.setBounds(0,0,mIconSize,mIconSize)
+                    setCompoundDrawables(null,drawable,null,null)
+//                    setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
                     setTextColor(mTitleHighlightColor!!)
                 } else {
                     val drawable = context.resources.getDrawable(mNormalRes!!)
-                    setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
+                    drawable.setBounds(0,0,mIconSize,mIconSize)
+                    setCompoundDrawables(null,drawable,null,null)
+//                    setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
                     setTextColor(mTitleNormalColor!!)
                 }
             }
@@ -52,7 +57,9 @@ class BottomNavigationItem : RadioButton{
         buttonDrawable = null
         setButtonDrawable(ColorDrawable(Color.TRANSPARENT));
         val drawable = context.resources.getDrawable(mNormalRes!!)
-        setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
+        drawable.setBounds(0,0,mIconSize,mIconSize)
+        setCompoundDrawables(null,drawable,null,null)
+//        setCompoundDrawablesWithIntrinsicBounds(null, drawable, null, null);
     }
 
     /**

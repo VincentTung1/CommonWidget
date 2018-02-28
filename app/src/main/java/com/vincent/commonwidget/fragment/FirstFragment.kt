@@ -24,6 +24,7 @@ class FirstFragment : BaseFragment() {
 //        navi.enableLeftBtn(true, View.OnClickListener {
 //            Toast.makeText(context,"已点击返回按钮！",0).show()
 //        })
+        navi.enableBottomLine(true,0)
         root.addView(navi)
 
         val btn = Button(context)
