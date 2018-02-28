@@ -2,6 +2,7 @@ package com.vincent.commonwidget.widget.topnavigation
 
 import android.content.Context
 import android.graphics.Color
+import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
@@ -46,7 +47,10 @@ class TopNavigation : RelativeLayout {
         val mTitleParam = RelativeLayout.LayoutParams(-2,-2)
         mTitleParam.addRule(RelativeLayout.CENTER_IN_PARENT)
         mTitle.layoutParams = mTitleParam
-        mTitle.textSize = 28f
+        mTitle.textSize = 23f
+        mTitle.setSingleLine()
+        mTitle.maxEms = 6
+        mTitle.ellipsize = TextUtils.TruncateAt.MIDDLE
         addView(mTitle)
 
 
