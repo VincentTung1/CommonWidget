@@ -33,7 +33,6 @@ abstract class MainBaseActivity :AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         initViews()
     }
 
