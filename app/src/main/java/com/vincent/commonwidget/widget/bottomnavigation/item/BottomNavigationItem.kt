@@ -27,7 +27,7 @@ class BottomNavigationItem : RadioButton{
     private var mTitleHighlightColor : Int? =0
 
     /**图标大小*/
-    private val mIconSize = 50
+    private val mIconSize = dpToPx(context,35f).toInt()
 
     init {
         setOnCheckedChangeListener { buttonView, isChecked ->
@@ -92,5 +92,10 @@ class BottomNavigationItem : RadioButton{
        mTitleHighlightColor = color
     }
 
+    private fun dpToPx(context: Context?, dp: Float): Float {
+        return if (context == null) {
+            -1f
+        } else dp * context.resources.displayMetrics.density
+    }
 
 }
