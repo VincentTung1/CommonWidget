@@ -3,6 +3,7 @@ package com.vincent.commonwidget.webview
 import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,12 +57,23 @@ abstract class WebViewBaseFragment : TouchNoPassBaseFragment() {
                 }
             }
         }
+        mWv.setOnKeyListener(object :View.OnKeyListener{
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if (keyCode == KeyEvent.KEYCODE_BACK && event!!.getRepeatCount() == 0) {
+                    if (mWv.canGoBack()) {
+                        mWv.goBack();
+                    } else {
+                        FragmentReplaceHelper.get().popFragments(fragmentManager)
+                    }
+                    return true;
+                }
+                return  false;
+            }
+
+        })
+
         return rootLayout;
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-
-    }
 }

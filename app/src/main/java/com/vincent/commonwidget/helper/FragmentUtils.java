@@ -408,7 +408,7 @@ public class FragmentUtils {
 
         FragmentTransaction ft = fragmentManager.beginTransaction();
         if (sharedElements == null || sharedElements.length == 0) {
-            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         } else {
             for (SharedElement element : sharedElements) {// 添加共享元素动画
                 ft.addSharedElement(element.sharedElement, element.name);
