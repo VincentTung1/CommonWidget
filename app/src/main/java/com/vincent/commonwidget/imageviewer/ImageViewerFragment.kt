@@ -6,16 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.vincent.commonwidget.helper.FragmentReplaceHelper
+import com.vincent.commonwidget.imageviewer.ImageViewerConst.Companion.IMAGE_PATHS
 
 /**
  *  通用的图片浏览器fragment
  */
 class ImageViewerFragment :Fragment() {
 
-     companion object {
-         /**所有图片路径*/
-         val IMAGE_PATHS = "image_paths"
-     }
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 

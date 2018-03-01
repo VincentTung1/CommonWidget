@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RelativeLayout
 import com.vincent.commonwidget.helper.FragmentReplaceHelper
+import com.vincent.commonwidget.imageviewer.ImageViewerActivity
 import com.vincent.commonwidget.imageviewer.ImageViewerFragment
 import com.vincent.commonwidget.widget.topnavigation.TopNavigation
 import java.io.File
+import java.util.*
 
 /**
  * Created by vincent_tung on 2018/2/23.
@@ -29,15 +31,17 @@ class ThirdFragment : BaseFragment() {
         navi.enableBottomLine(true,0)
         root.addView(navi)
 
-        val btn = Button(context)
+        val btnF = Button(context)
         val param = RelativeLayout.LayoutParams(-1,-1)
+        root.layoutParams = param
 
-        val btnParam = RelativeLayout.LayoutParams(-2,-2)
-        btnParam.addRule(RelativeLayout.CENTER_IN_PARENT)
-        btn.layoutParams = btnParam
-        btn.textSize = 25f
-        btn.setText("点击进入图片浏览器fragment")
-        btn.setOnClickListener {
+        val btnFParam = RelativeLayout.LayoutParams(-2,-2)
+        btnFParam.addRule(RelativeLayout.CENTER_IN_PARENT)
+        btnF.id = Random().nextInt()
+        btnF.layoutParams = btnFParam
+        btnF.textSize = 25f
+        btnF.setText("点击进入图片浏览器fragment")
+        btnF.setOnClickListener {
             val imageFrag = ImageViewerFragment()
             val photos = ArrayList<String>()
 
@@ -49,8 +53,28 @@ class ThirdFragment : BaseFragment() {
             imageFrag.setImagePaths(photos)
             FragmentReplaceHelper.get().addFragment(fragmentManager,imageFrag)
         }
-        root.addView(btn)
-        root.layoutParams = param
+        root.addView(btnF)
+
+
+        val btnAParam = RelativeLayout.LayoutParams(-2,-2)
+        btnAParam.addRule(RelativeLayout.CENTER_IN_PARENT)
+        btnAParam.addRule(RelativeLayout.BELOW,btnF.id)
+        val btnA = Button(context)
+        btnA.layoutParams = btnAParam
+        btnA.textSize = 25f
+        btnA.setText("点击进入图片浏览器Activity")
+        btnA.setOnClickListener {
+            val photos = ArrayList<String>()
+
+            val dir :String= Environment.getExternalStorageDirectory().absolutePath + File.separator
+            for (i in 1..3){
+                photos.add("${dir}p${i}.jpg")
+            }
+
+            ImageViewerActivity.start(activity,photos)
+        }
+        root.addView(btnA)
+
         return root
     }
 }

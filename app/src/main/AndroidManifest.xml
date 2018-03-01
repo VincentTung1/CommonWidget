@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".webview.WebViewActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".imageviewer.ImageViewerActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
