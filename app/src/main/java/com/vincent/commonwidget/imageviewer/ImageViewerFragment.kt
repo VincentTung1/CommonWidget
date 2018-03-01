@@ -25,7 +25,7 @@ class ImageViewerFragment :Fragment() {
 
         val photos = arguments.getStringArrayList(IMAGE_PATHS)
 
-        view.setImagesPath(photos,object :ImageViewerView.OnImageClickListener{
+        view.setImagePaths(photos,object :ImageViewerView.OnImagePathClickListener {
             override fun onImageClick() {
                 FragmentReplaceHelper.get().popFragments(fragmentManager)
             }

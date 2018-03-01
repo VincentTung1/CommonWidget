@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.vincent.commonwidget.util.ScreenUtil
@@ -72,7 +73,7 @@ class ImageViewerView :RelativeLayout {
     /**
      *  设置图片所有路径
      */
-    fun setImagesPath(paths:ArrayList<String>,listener : OnImageClickListener?){
+    fun setImagePaths(paths:ArrayList<String>, listener : OnImagePathClickListener?){
         mVp.adapter = object : PagerAdapter() {
             override fun isViewFromObject(view: View?, `object`: Any?): Boolean {
                 return  view==`object`
@@ -107,6 +108,42 @@ class ImageViewerView :RelativeLayout {
     }
 
     /**
+     *  设置图片所有url
+     */
+   fun setImageUrls(urls:ArrayList<String>, listener : OnImageUrlClickListener?){
+       mVp.adapter = object : PagerAdapter() {
+           override fun isViewFromObject(view: View?, `object`: Any?): Boolean {
+               return  view==`object`
+           }
+
+           override fun getCount(): Int {
+               return urls.size
+           }
+
+           override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+               container.removeView(`object` as View)
+           }
+
+           override fun getItemPosition(`object`: Any): Int {
+               return POSITION_NONE
+           }
+
+           override fun instantiateItem(container: ViewGroup, position: Int): Any {
+               val url = urls.get(position)
+               val photoView = PhotoView(context)
+               listener!!.loadImage(photoView,url)
+               photoView.setOnClickListener {
+                   listener.onImageClick()
+               }
+               return photoView
+           }
+
+
+       }
+       mCurrent.setText("1/${mVp.adapter.count}")
+   }
+
+    /**
      *  设置当前位置的图片
      */
     fun setCurrentItem(index : Int){
@@ -115,8 +152,19 @@ class ImageViewerView :RelativeLayout {
         }
     }
 
-    interface OnImageClickListener{
+    interface OnImagePathClickListener {
+
+        /**响应图片点击事件*/
         fun onImageClick();
+    }
+
+    interface OnImageUrlClickListener{
+
+        /**响应图片点击事件*/
+        fun onImageClick();
+
+        /**加载图片*/
+        fun loadImage(view:ImageView,url:String)
     }
 }
 

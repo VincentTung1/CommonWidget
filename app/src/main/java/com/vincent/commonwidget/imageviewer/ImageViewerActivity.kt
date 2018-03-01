@@ -32,7 +32,7 @@ class ImageViewerActivity : FragmentActivity() {
 
         val photos = intent.getStringArrayListExtra(ImageViewerConst.IMAGE_PATHS)
 
-        view.setImagesPath(photos,object :ImageViewerView.OnImageClickListener{
+        view.setImagePaths(photos,object :ImageViewerView.OnImagePathClickListener {
             override fun onImageClick() {
                 finish()
             }
