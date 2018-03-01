@@ -2,6 +2,8 @@ package com.vincent.commonwidget.webview
 
 import android.app.Activity
 import android.content.Intent
+import com.vincent.commonwidget.webview.WebViewBaseConst.Companion.IS_SHOW_TOP_BAR
+import com.vincent.commonwidget.webview.WebViewBaseConst.Companion.LOAD_URL
 
 /**
  * Created by vincent_tung on 2018/2/28.

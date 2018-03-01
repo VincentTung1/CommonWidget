@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.RelativeLayout
 import com.vincent.commonwidget.helper.FragmentReplaceHelper
 import com.vincent.commonwidget.webview.WebViewActivity
-import com.vincent.commonwidget.webview.WebViewBaseFragment
+import com.vincent.commonwidget.webview.WebViewBaseConst
 import com.vincent.commonwidget.webview.WebViewFragment
 import com.vincent.commonwidget.widget.topnavigation.TopNavigation
 
@@ -40,7 +40,7 @@ class SecondFragment : BaseFragment() {
         btnF.setOnClickListener {
             val webViewFrag = WebViewFragment()
             val bundle = Bundle()
-            bundle.putString(WebViewBaseFragment.LOAD_URL,"http://www.baidu.com")
+            bundle.putString(WebViewBaseConst.LOAD_URL,"http://www.baidu.com")
             webViewFrag.arguments = bundle
             FragmentReplaceHelper.get().addFragment(fragmentManager,webViewFrag)
         }
