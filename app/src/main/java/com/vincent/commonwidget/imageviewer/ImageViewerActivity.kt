@@ -12,9 +12,10 @@ import android.view.ViewGroup
 class ImageViewerActivity : FragmentActivity() {
 
     companion object {
-        fun start(activity: Activity, paths:ArrayList<String>){
+        fun start(activity: Activity, paths:ArrayList<String>,currentIndex : Int){
             val intent = Intent(activity,ImageViewerActivity::class.java)
             intent.putExtra(ImageViewerConst.IMAGE_PATHS,paths)
+            intent.putExtra(ImageViewerConst.CURRENT_INDEX,currentIndex)
             activity.startActivity(intent)
             activity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
@@ -37,6 +38,10 @@ class ImageViewerActivity : FragmentActivity() {
             }
 
         })
+
+        val index = intent.getIntExtra(ImageViewerConst.CURRENT_INDEX,0)
+        view.setCurrentItem(index)
+
         setContentView(view)
     }
 

@@ -13,7 +13,7 @@ import com.vincent.commonwidget.imageviewer.ImageViewerConst.Companion.IMAGE_PAT
  */
 class ImageViewerFragment :Fragment() {
 
-
+    private var mCurrentIndex: Int = 0
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -32,6 +32,8 @@ class ImageViewerFragment :Fragment() {
 
         })
 
+        view.setCurrentItem(mCurrentIndex)
+
         return view
     }
 
@@ -43,5 +45,13 @@ class ImageViewerFragment :Fragment() {
         val bundle = Bundle()
         bundle.putStringArrayList(IMAGE_PATHS,paths)
         arguments = bundle
+    }
+
+
+    /**
+     *  设置当前位置的图片
+     */
+    fun setCurrentItem(index :Int){
+        mCurrentIndex = index
     }
 }

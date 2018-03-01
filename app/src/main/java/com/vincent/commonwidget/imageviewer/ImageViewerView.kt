@@ -103,6 +103,16 @@ class ImageViewerView :RelativeLayout {
             }
         }
         mCurrent.setText("1/${mVp.adapter.count}")
+
+    }
+
+    /**
+     *  设置当前位置的图片
+     */
+    fun setCurrentItem(index : Int){
+        if (index >= 0 && index < mVp.adapter.count){
+            mVp.currentItem = index
+        }
     }
 
     interface OnImageClickListener{

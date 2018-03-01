@@ -51,6 +51,7 @@ class ThirdFragment : BaseFragment() {
             }
 
             imageFrag.setImagePaths(photos)
+            imageFrag.setCurrentItem(1)
             FragmentReplaceHelper.get().addFragment(fragmentManager,imageFrag)
         }
         root.addView(btnF)
@@ -71,7 +72,7 @@ class ThirdFragment : BaseFragment() {
                 photos.add("${dir}p${i}.jpg")
             }
 
-            ImageViewerActivity.start(activity,photos)
+            ImageViewerActivity.start(activity,photos,2)
         }
         root.addView(btnA)
 
