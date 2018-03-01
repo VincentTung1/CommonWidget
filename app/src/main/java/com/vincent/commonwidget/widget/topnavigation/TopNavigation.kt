@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.vincent.commonwidget.R
+import com.vincent.commonwidget.util.ScreenUtil
 
 /**
  *  通用导航栏
@@ -60,17 +61,12 @@ class TopNavigation : RelativeLayout {
     }
 
 
-     private fun dpToPx(context: Context?, dp: Float): Float {
-        return if (context == null) {
-            -1f
-        } else dp * context.resources.displayMetrics.density
-    }
 
     /**
      *  设置导航栏高度
      */
     fun setHeight(dp : Float){
-        val px= dpToPx(context!!,dp).toInt()
+        val px= ScreenUtil.dpToPx(context!!,dp).toInt()
         val naviParam = RelativeLayout.LayoutParams(-1,px)
         layoutParams = naviParam
     }

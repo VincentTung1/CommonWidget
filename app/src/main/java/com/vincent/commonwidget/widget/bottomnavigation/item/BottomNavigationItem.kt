@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
 import android.widget.RadioButton
+import com.vincent.commonwidget.util.ScreenUtil
 
 /**
  * Created by vincent_tung on 2018/2/10.
@@ -27,7 +28,7 @@ class BottomNavigationItem : RadioButton{
     private var mTitleHighlightColor : Int? =0
 
     /**图标大小*/
-    private val mIconSize = dpToPx(context,35f).toInt()
+    private val mIconSize = ScreenUtil.dpToPx(context,35f).toInt()
 
     init {
         setOnCheckedChangeListener { buttonView, isChecked ->
@@ -90,12 +91,6 @@ class BottomNavigationItem : RadioButton{
      */
     fun setTitleHighlightColor(color :Int){
        mTitleHighlightColor = color
-    }
-
-    private fun dpToPx(context: Context?, dp: Float): Float {
-        return if (context == null) {
-            -1f
-        } else dp * context.resources.displayMetrics.density
     }
 
 }
