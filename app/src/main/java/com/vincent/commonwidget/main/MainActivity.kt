@@ -10,6 +10,10 @@ import com.vincent.commonwidget.widget.bottomnavigation.entity.BottomNavigationI
 
 class MainActivity : MainBaseActivity() {
 
+    override fun enabledScroll(): Boolean {
+       return false
+    }
+
     private lateinit var first: FirstFragment
 
     override fun getDefaultSelectItem(): Int {

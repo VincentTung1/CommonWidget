@@ -110,6 +110,10 @@ abstract class MainBaseActivity :AppCompatActivity(){
             vp.currentItem = index
         }
 
+        if (!enabledScroll()){
+            vp.setNoScroll(true)
+        }
+
         bottomNavi.setOnCheckedChangeListener { group, checkedId ->
             run {
                 vp.currentItem = checkedId - 1
@@ -183,6 +187,12 @@ abstract class MainBaseActivity :AppCompatActivity(){
      *  设置默认显示的fragment
      */
     abstract fun getDefaultShownFragment() : Fragment?
+
+
+    /**
+     *  设置viewpager是否支持滑动
+     */
+    abstract fun enabledScroll() : Boolean
 }
 
 
