@@ -11,7 +11,7 @@ import com.vincent.commonwidget.widget.bottomnavigation.entity.BottomNavigationI
 class MainActivity : MainBaseActivity() {
 
     override fun enabledScroll(): Boolean {
-       return false
+       return true
     }
 
     private lateinit var first: FirstFragment
