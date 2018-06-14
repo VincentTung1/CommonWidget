@@ -155,7 +155,7 @@ public class FllowLikeManager {
 
         initPaths(iv, destY);
 
-        final Path path = mPaths.get(new Random().nextInt(2));
+        final Path path = mPaths.get(new Random().nextInt(mPaths.size()));
 
 
         ValueAnimator anim = ValueAnimator.ofInt(mParam.y,destY);
