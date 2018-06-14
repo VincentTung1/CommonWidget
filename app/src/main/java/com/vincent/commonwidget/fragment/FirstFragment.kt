@@ -1,13 +1,17 @@
 package com.vincent.commonwidget.fragment
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.RelativeLayout
+import com.vincent.commonwidget.R
 import com.vincent.commonwidget.helper.FragmentReplaceHelper
+import com.vincent.commonwidget.widget.fllowlike.FllowLikeManager
 import com.vincent.commonwidget.widget.topnavigation.TopNavigation
 
 /**
@@ -15,6 +19,7 @@ import com.vincent.commonwidget.widget.topnavigation.TopNavigation
  */
 class FirstFragment : BaseFragment() {
 
+    @SuppressLint("ResourceType")
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val root  = RelativeLayout(context)
@@ -34,6 +39,7 @@ class FirstFragment : BaseFragment() {
         btnParam.addRule(RelativeLayout.CENTER_IN_PARENT)
         btn.layoutParams = btnParam
         btn.textSize = 25f
+        btn.id = 1
         btn.setText("点击进入事例fragment")
         btn.setOnClickListener {
             val exampleFrag = ExampleFragment()
@@ -44,6 +50,26 @@ class FirstFragment : BaseFragment() {
         }
         root.addView(btn)
         root.layoutParams = param
+
+        val images = intArrayOf(R.drawable.ic_like_blue, R.drawable.ic_like_green, R.drawable.ic_like_red, R.drawable.ic_like_yellow)
+        FllowLikeManager.get().init(context).setDisplayImagesResource(images)
+
+        val imageView  = ImageView(context)
+        imageView.setImageResource(R.drawable.ic_like_red)
+        val imageViewParam = RelativeLayout.LayoutParams(-2,-2)
+        imageViewParam.addRule(RelativeLayout.CENTER_IN_PARENT)
+        imageViewParam.addRule(RelativeLayout.BELOW,btn.id)
+
+        val density= resources.displayMetrics.density;
+        imageViewParam.topMargin = (10*density).toInt()
+        imageView.layoutParams  =imageViewParam
+
+        imageView.setOnClickListener {
+            FllowLikeManager.get().bezierPopup(imageView)
+        }
+
+        root.addView(imageView)
+
         return root
     }
 }
