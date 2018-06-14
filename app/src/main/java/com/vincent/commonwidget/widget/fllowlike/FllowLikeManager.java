@@ -189,6 +189,10 @@ public class FllowLikeManager {
                 iv.getDrawable().setAlpha((int) currentAlpha);
 
 
+                // 设置缩放值
+                float scale = 1 - currD * 0.5f / totalD;
+                iv.setScaleX(scale);
+                iv.setScaleY(scale);
 
                 mWm.updateViewLayout(iv,mParam);
             }
