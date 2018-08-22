@@ -24,7 +24,13 @@ public class LineBarView extends View {
 
     Context mContext;
 
-    private int mDefalutLevel = 5;
+    private int mTotalLevel = 5;
+
+    /**标准等级*/
+    private int mStandardLevel = 2;
+
+    /**当前等级*/
+    private int mCurrentLevel = 1;
 
     private int mBallX = 0;
     private int mBallRadius;
@@ -42,8 +48,27 @@ public class LineBarView extends View {
 
 
     public void setTotalLevel(int level){
-        mDefalutLevel = level-1;
+        mTotalLevel = level-1;
     }
+
+
+    /**
+     *  设置标准等级
+     * @param standardLevel
+     */
+    public void setStandardLevel(int standardLevel) {
+        mStandardLevel = standardLevel;
+    }
+
+
+    /**
+     *  设置当前等级
+     * @param level
+     */
+    public void setCurrentLevel(int level){
+        mCurrentLevel = level;
+    }
+
 
     public LineBarView(Context context) {
         this(context,null);
@@ -91,8 +116,8 @@ public class LineBarView extends View {
         mBallRadius = buttonWidth / 2;
 
 
-        int startY = getHeight() - 20*getDensity();
-        int startX  = getPaddingLeft() + 2*mBallRadius;
+        int startY = getHeight() - 20 * getDensity();
+        int startX  = getPaddingLeft() + 2 * mBallRadius;
 
          mEndX = getWidth() -  2*mBallRadius;
 
@@ -100,13 +125,13 @@ public class LineBarView extends View {
         canvas.drawLine(startX, startY,getWidth() - 2*mBallRadius,startY,mPaint);
 
 
-        int interval = (mEndX - startX)/ mDefalutLevel;
+        int interval = (mEndX - startX)/ mTotalLevel;
 
 
         intervalXList.clear();
 
         // 画竖线
-        for (int i = 0; i<= mDefalutLevel;i++){
+        for (int i = 0; i<= mTotalLevel; i++){
             if (i == 0){
                 canvas.drawLine(startX,startY - mBallRadius, startX,startY +mBallRadius,mPaint);
 
@@ -122,19 +147,38 @@ public class LineBarView extends View {
         // 画文字
 
         String text = "A";
-        mTextPaint.setTextSize(15);
+        mTextPaint.setTextSize(15 * getDensity());
         canvas.drawText(text,startX -mTextPaint.measureText(text)/2,startY - 2*mBallRadius,mTextPaint);
-        mTextPaint.setTextSize(30);
+        mTextPaint.setTextSize(30 * getDensity());
         canvas.drawText(text, mEndX - mTextPaint.measureText(text)/2,startY - 2*mBallRadius,mTextPaint);
 
 
+        mTextPaint.setTextSize(20 * getDensity());
+        for (int i = 0; i <= mTotalLevel; i++) {
+            if (i+1 == mStandardLevel){
+                canvas.drawText("标准",intervalXList.get(i) + mTextPaint.measureText(text)/2,startY - 2*mBallRadius,mTextPaint);
+            }
+        }
+
+
         // 画球
-        mBallPaint.setColor(Color.WHITE);
-        mBallPaint.setStyle(Paint.Style.FILL);
-        canvas.drawCircle(startX + mBallX,startY, mBallRadius,mBallPaint);
-        mBallPaint.setColor(Color.BLACK);
-        mBallPaint.setStyle(Paint.Style.STROKE);
-        canvas.drawCircle(startX + mBallX,startY, mBallRadius,mBallPaint);
+        if (mCurrentLevel > 1 && mCurrentLevel <=mTotalLevel){
+            mBallPaint.setColor(Color.WHITE);
+            mBallPaint.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(intervalXList.get(mCurrentLevel-1)+startX+mBallX,startY, mBallRadius,mBallPaint);
+            mBallPaint.setColor(Color.BLACK);
+            mBallPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawCircle(intervalXList.get(mCurrentLevel-1)+startX+mBallX,startY, mBallRadius,mBallPaint);
+        }else {
+            mBallPaint.setColor(Color.WHITE);
+            mBallPaint.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(startX + mBallX,startY, mBallRadius,mBallPaint);
+            mBallPaint.setColor(Color.BLACK);
+            mBallPaint.setStyle(Paint.Style.STROKE);
+            canvas.drawCircle(startX + mBallX,startY, mBallRadius,mBallPaint);
+        }
+
+
 
 
 
@@ -143,6 +187,7 @@ public class LineBarView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        mCurrentLevel = -1;
 
         mBallX = (int) event.getX() - 2* mBallRadius;
         if (mBallX < 0 || mBallX > mEndX - 2*mBallRadius){
